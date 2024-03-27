@@ -1,10 +1,16 @@
+using Assets.Scripts;
 using UnityEngine;
 
 public class Player : Person
 {
     [SerializeField] private int _experience;
-    [SerializeField][Range(0,5)] private float moveSpeed;
+    [SerializeField][Range(0, 5)] private float moveSpeed;
+    [SerializeField] private Person dragon;
 
+    private void Update()
+    {
+        Move();
+    }
     public int Experience
     {
         get
@@ -26,5 +32,23 @@ public class Player : Person
     {
         Health -= damageValue;
         Debug.Log($"My name is {Name}, I've been dealt {damageValue} DMG, and now I have {Health} HP!");
+    }
+    private void Move()
+    {
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(-1 * (moveSpeed * Time.deltaTime), 0, 0);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(1 * (moveSpeed * Time.deltaTime), 0, 0);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            TakeDamage(dragon.Damage);
+        }
     }
 }

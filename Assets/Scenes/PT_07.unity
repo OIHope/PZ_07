@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 1632005848}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -560,10 +560,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b69e039784e04478369a91bad975e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: BlueGuy
   _health: 100
+  _damage: 34
   _experience: 0
-  moveSpeed: 2.44
+  moveSpeed: 5
+  dragon: {fileID: 2725371418590974117}
 --- !u!1001 &2725371418590974115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -572,6 +574,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 64390915035615350, guid: 7830c989987852b46ac32bf7c0665349, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 383451626392271520, guid: 7830c989987852b46ac32bf7c0665349, type: 3}
       propertyPath: m_Name
       value: Dragon
@@ -645,8 +651,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe90a8e59aaa5848ac36ac97d532e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
-  _health: 0
+  _name: MIGHTY DRAGON
+  _health: 150
+  _damage: 35
+  player: {fileID: 1632005848}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

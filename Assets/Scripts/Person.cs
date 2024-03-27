@@ -5,7 +5,12 @@ public abstract class Person : MonoBehaviour
     [SerializeField] private string _name = string.Empty;
     [Space(10)]
     [SerializeField] private int _health;
+    [SerializeField] private int _damage;
 
+    private void Start()
+    {
+        ShowStat();
+    }
     public string Name { get { return _name; } private set { _name = value; } }
     public int Health
     {
@@ -17,15 +22,32 @@ public abstract class Person : MonoBehaviour
         {
             if (value < 0)
             {
-                _health = 0;
-                Debug.Log("Health value is lower then 0 !");
+                value = 0;
+                Debug.Log("Health value is lower then 0 ! This obj is dead");
+                Destroy(this);
             }
             else if (value > 100)
             {
-                _health = 100;
+                value = 100;
                 Debug.Log("Health value is more then 100 !");
             }
             _health = value;
+        }
+    }
+    public int Damage
+    {
+        get
+        {
+            return _damage;
+        }
+        private set
+        {
+            if (value < 0)
+            {
+                _damage = 0;
+                Debug.Log("Damage value is lower then 0 !");
+            }
+            _damage = value;
         }
     }
     public virtual void ShowStat()
