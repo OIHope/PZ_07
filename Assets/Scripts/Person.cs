@@ -7,17 +7,10 @@ public abstract class Person : MonoBehaviour
     [SerializeField] private int _health;
     [SerializeField] private int _damage;
 
-    private void Start()
-    {
-        ShowStat();
-    }
     public string Name { get { return _name; } private set { _name = value; } }
     public int Health
     {
-        get
-        {
-            return _health;
-        }
+        get => _health;
         set
         {
             if (value < 0)
@@ -36,10 +29,7 @@ public abstract class Person : MonoBehaviour
     }
     public int Damage
     {
-        get
-        {
-            return _damage;
-        }
+        get => _damage;
         private set
         {
             if (value < 0)
@@ -50,9 +40,6 @@ public abstract class Person : MonoBehaviour
             _damage = value;
         }
     }
-    public virtual void ShowStat()
-    {
-        Debug.Log($"Name is {_name}");
-    }
+    public virtual void ShowStat() => Debug.Log($"Name is {_name}");
     public abstract void TakeDamage(int damageValue);
 }

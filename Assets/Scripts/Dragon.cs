@@ -12,10 +12,7 @@ namespace Assets.Scripts
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.tag == "Player")
-            {
-                TakeDamage(player.Damage);
-            }
+            if (other.gameObject.tag == "Player") TakeDamage(player.Damage);
         }
     }
 
